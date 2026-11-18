@@ -1,154 +1,112 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OFERTA CERTA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0756c9">
+<title>OFERTA CERTA — Encontre sua oferta</title>
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#f1f5fb;
- color:#172554;
-}
-header{
- background:#0755c9;
- color:white;
- padding:25px 15px;
- text-align:center;
-}
-header h1{margin:0;font-size:30px}
-header p{margin-bottom:0}
-.container{
- max-width:900px;
- margin:25px auto;
- padding:15px;
-}
-.search{
- display:flex;
- gap:8px;
-}
-input{
- flex:1;
- min-width:0;
- padding:14px;
- border:1px solid #ccc;
- border-radius:8px;
- font-size:16px;
-}
-button{
- background:#0755c9;
- color:white;
- border:0;
- padding:14px 18px;
- border-radius:8px;
- font-weight:bold;
- cursor:pointer;
-}
-h2{margin-top:30px}
-.grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
- gap:15px;
-}
-.card{
- background:white;
- padding:20px;
- border-radius:12px;
- box-shadow:0 2px 9px #0001;
- text-align:center;
-}
-.card .emoji{font-size:35px}
-.card h3{margin:10px 0}
-.card p{color:#64748b}
-footer{
- text-align:center;
- padding:25px;
- color:#64748b;
-}
+:root{--blue:#0756c9;--blue2:#0b73ed;--ink:#12213a;--muted:#64748b;--bg:#f3f7fc;--line:#e4ebf4;--white:#fff;--green:#0b9b62}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(115deg,#0645a8,#0878ef);color:#fff;padding:22px 16px 26px}
+.wrap{max-width:1120px;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:900;font-size:25px;letter-spacing:.4px}.brand span{color:#bde1ff}.tag{font-size:12px;opacity:.9}
+.adminBtn,.mainBtn{border:0;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer}.adminBtn{background:#ffffff20;color:#fff;border:1px solid #ffffff55}
+.hero{padding:30px 0 8px}.hero h1{font-size:clamp(27px,5vw,42px);line-height:1.08;margin:0 0 10px}.hero p{margin:0 0 18px;color:#e5f1ff}
+.search{display:flex;background:#fff;border-radius:14px;padding:5px;max-width:680px;box-shadow:0 10px 28px #003b8c35}.search input{border:0;outline:0;flex:1;min-width:0;padding:12px;font-size:16px;border-radius:10px}.search button{background:var(--blue);color:white;border:0;border-radius:10px;padding:0 18px;font-weight:800}
+main{max-width:1120px;margin:auto;padding:22px 16px 50px}.sectionHead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:6px 0 14px}.sectionHead h2{font-size:21px;margin:0}.hint{color:var(--muted);font-size:12px}
+.categories{display:flex;gap:9px;overflow:auto;padding:2px 0 13px}.cat{white-space:nowrap;border:1px solid var(--line);background:#fff;color:#29415f;border-radius:999px;padding:10px 14px;font-weight:700;cursor:pointer}.cat.active{background:var(--blue);border-color:var(--blue);color:white}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:7px 0 15px;flex-wrap:wrap}.toolbar select{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff;color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.product{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-width:0;box-shadow:0 4px 14px #1c3d6810}.photo{height:150px;background:linear-gradient(135deg,#eaf3ff,#f8fbff);display:grid;place-items:center;font-size:55px}.pbody{padding:13px;display:flex;flex-direction:column;gap:7px;flex:1}.pill{font-size:11px;font-weight:800;color:var(--blue);background:#eaf3ff;padding:5px 8px;border-radius:99px;width:max-content}.pname{font-weight:750;line-height:1.3;min-height:40px}.old{font-size:12px;color:#8492a6;text-decoration:line-through}.price{font-size:23px;font-weight:900;color:var(--ink)}.store{font-size:12px;color:var(--muted)}.buy{display:block;text-align:center;text-decoration:none;background:var(--blue);color:#fff;padding:11px;border-radius:10px;font-weight:800;margin-top:auto}.buy.disabled{background:#dce7f5;color:#53657c;pointer-events:none}
+.empty{grid-column:1/-1;text-align:center;background:white;padding:35px;border-radius:15px;color:var(--muted)}
+.notice{background:#fff8e6;border:1px solid #f4dfaa;color:#72551b;border-radius:12px;padding:12px 14px;font-size:13px;margin:0 0 18px}
+footer{text-align:center;color:#718096;padding:24px 16px;font-size:12px}
+dialog{border:0;border-radius:18px;padding:0;width:min(560px,calc(100% - 24px));box-shadow:0 25px 80px #0b234455}dialog::backdrop{background:#10243d99}.modal{padding:20px}.modalHead{display:flex;justify-content:space-between;align-items:center}.modal h2{margin:0 0 14px}.close{border:0;background:#eef3fa;border-radius:9px;padding:8px 11px;font-weight:800}
+form{display:grid;gap:10px}label{font-size:13px;font-weight:750}form input,form select{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;font:inherit}.formrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mainBtn{background:var(--blue);color:#fff}.adminHelp{font-size:12px;color:var(--muted);line-height:1.5}
+@media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:600px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo{height:115px;font-size:43px}.pbody{padding:10px}.price{font-size:20px}.brand{font-size:21px}.hero{padding-top:25px}.formrow{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-
-<header>
-<h1>🔵 OFERTA CERTA</h1>
-<p>As melhores ofertas em um só lugar!</p>
-</header>
-
-<div class="container">
-
-<h2>🔎 Encontre sua oferta</h2>
-
-<div class="search">
-<input id="busca" placeholder="O que você procura?">
-<button onclick="buscar()">Buscar</button>
-</div>
-
-<h2>🛍️ Categorias</h2>
-
-<div class="grid">
-<div class="card">
-<div class="emoji">📱</div>
-<h3>Celulares</h3>
-<p>Tecnologia e ofertas</p>
-</div>
-
-<div class="card">
-<div class="emoji">💻</div>
-<h3>Informática</h3>
-<p>Computadores e acessórios</p>
-</div>
-
-<div class="card">
-<div class="emoji">🏠</div>
-<h3>Casa</h3>
-<p>Produtos para seu lar</p>
-</div>
-
-<div class="card">
-<div class="emoji">👕</div>
-<h3>Moda</h3>
-<p>Roupas e acessórios</p>
-</div>
-
-<div class="card">
-<div class="emoji">🎮</div>
-<h3>Games</h3>
-<p>Jogos e consoles</p>
-</div>
-
-<div class="card">
-<div class="emoji">🔌</div>
-<h3>Eletrônicos</h3>
-<p>Ofertas em tecnologia</p>
-</div>
-</div>
-
-<h2>⭐ Ofertas em breve</h2>
-<div class="card">
-<h3>Estamos preparando novidades!</h3>
-<p>Em breve você encontrará produtos e ofertas selecionadas no OFERTA CERTA.</p>
-</div>
-
-</div>
-
-<footer>
-© 2026 OFERTA CERTA - Todos os direitos reservados.
-</footer>
-
+<header><div class="wrap">
+ <div class="top"><div><div class="brand">OFERTA <span>CERTA</span></div><div class="tag">Boas escolhas começam aqui.</div></div><button class="adminBtn" id="openAdmin">＋ Cadastrar oferta</button></div>
+ <section class="hero"><h1>Encontre ofertas em<br>todas as categorias.</h1><p>Pesquise produtos e compare oportunidades em um só lugar.</p>
+  <div class="search"><input id="search" type="search" placeholder="O que você está procurando?"><button id="searchBtn">Buscar</button></div>
+ </section>
+</div></header>
+<main>
+ <div class="notice"><strong>Versão inicial:</strong> os itens de demonstração abaixo são exemplos, não ofertas verificadas. Cadastre ofertas reais com preço, loja e link de compra pelo botão “Cadastrar oferta”.</div>
+ <div class="sectionHead"><h2>Explore por categoria</h2></div>
+ <nav class="categories" id="categories"></nav>
+ <div class="toolbar"><div><strong id="resultCount">0 ofertas</strong><div class="hint">Ofertas cadastradas neste aparelho</div></div>
+ <select id="sort"><option value="recent">Mais recentes</option><option value="low">Menor preço</option><option value="high">Maior preço</option></select></div>
+ <section class="grid" id="products"></section>
+</main>
+<footer>OFERTA CERTA · Pesquise, compare e compre com atenção. Verifique preço, frete e condições no site da loja.</footer>
+<dialog id="adminDialog"><div class="modal">
+ <div class="modalHead"><h2>Cadastrar nova oferta</h2><button class="close" id="closeAdmin">Fechar</button></div>
+ <form id="offerForm">
+  <div><label for="name">Nome do produto</label><input id="name" required maxlength="90" placeholder="Ex.: Fone Bluetooth"></div>
+  <div class="formrow"><div><label for="price">Preço atual (R$)</label><input id="price" required type="number" min="0.01" step="0.01" placeholder="99,90"></div><div><label for="oldPrice">Preço anterior (opcional)</label><input id="oldPrice" type="number" min="0" step="0.01" placeholder="129,90"></div></div>
+  <div class="formrow"><div><label for="category">Categoria</label><select id="category"></select></div><div><label for="store">Loja</label><input id="store" required placeholder="Nome da loja"></div></div>
+  <div><label for="url">Link direto do produto</label><input id="url" type="url" required placeholder="https://..."></div>
+  <div><label for="emoji">Ícone do produto (opcional)</label><input id="emoji" maxlength="4" placeholder="📦"></div>
+  <button class="mainBtn" type="submit">Salvar oferta neste aparelho</button>
+ </form>
+ <p class="adminHelp">Os cadastros ficam salvos no armazenamento deste navegador/aparelho. Esta versão ainda não sincroniza ofertas entre usuários nem possui banco de dados online.</p>
+</div></dialog>
 <script>
-function buscar(){
- const termo=document.getElementById("busca").value.trim();
- if(!termo){
-  alert("Digite o que você procura!");
-  return;
- }
- alert("Estamos preparando as ofertas de: "+termo);
+const categories=['Todas','Celulares e eletrônicos','Informática','Eletrodomésticos','Casa e decoração','Roupas e calçados','Beleza e perfumes','Mercado e alimentos','Esporte e lazer','Brinquedos','Automotivo'];
+const icons={'Todas':'✨','Celulares e eletrônicos':'📱','Informática':'💻','Eletrodomésticos':'🧺','Casa e decoração':'🏠','Roupas e calçados':'👟','Beleza e perfumes':'🧴','Mercado e alimentos':'🛒','Esporte e lazer':'⚽','Brinquedos':'🧸','Automotivo':'🚗'};
+const demo=[
+ {name:'Smartphone — exemplo de cadastro',price:0,category:'Celulares e eletrônicos',store:'Cadastre uma loja',emoji:'📱',url:''},
+ {name:'Notebook — exemplo de cadastro',price:0,category:'Informática',store:'Cadastre uma loja',emoji:'💻',url:''},
+ {name:'Liquidificador — exemplo de cadastro',price:0,category:'Eletrodomésticos',store:'Cadastre uma loja',emoji:'🥤',url:''},
+ {name:'Tênis — exemplo de cadastro',price:0,category:'Roupas e calçados',store:'Cadastre uma loja',emoji:'👟',url:''}
+];
+let offers=JSON.parse(localStorage.getItem('ofertaCertaOffers')||'[]');
+let selected='Todas';
+const catNav=document.getElementById('categories'), productGrid=document.getElementById('products');
+function money(v){return Number(v).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function save(){localStorage.setItem('ofertaCertaOffers',JSON.stringify(offers))}
+function renderCats(){
+ catNav.innerHTML='';
+ categories.forEach(c=>{const b=document.createElement('button');b.className='cat'+(selected===c?' active':'');b.textContent=(icons[c]||'')+' '+c;b.onclick=()=>{selected=c;renderCats();renderProducts()};catNav.appendChild(b)});
+ const sel=document.getElementById('category');sel.innerHTML=categories.slice(1).map(c=>`<option>${c}</option>`).join('');
 }
+function renderProducts(){
+ const q=document.getElementById('search').value.trim().toLocaleLowerCase('pt-BR');
+ let items=offers.filter(p=>(selected==='Todas'||p.category===selected)&&(`${p.name} ${p.store} ${p.category}`).toLocaleLowerCase('pt-BR').includes(q));
+ const sort=document.getElementById('sort').value;
+ if(sort==='low')items.sort((a,b)=>a.price-b.price);if(sort==='high')items.sort((a,b)=>b.price-a.price);
+ document.getElementById('resultCount').textContent=items.length+' ofertas';
+ productGrid.innerHTML='';
+ if(!items.length){productGrid.innerHTML='<div class="empty">Nenhuma oferta cadastrada nesta categoria ainda.<br>Use “＋ Cadastrar oferta” para adicionar a primeira!</div>';return}
+ items.forEach(p=>{
+  const card=document.createElement('article');card.className='product';
+  const photo=document.createElement('div');photo.className='photo';photo.textContent=p.emoji||'📦';
+  const body=document.createElement('div');body.className='pbody';
+  const pill=document.createElement('span');pill.className='pill';pill.textContent=p.category;
+  const name=document.createElement('div');name.className='pname';name.textContent=p.name;
+  const store=document.createElement('div');store.className='store';store.textContent='Loja: '+p.store;
+  body.append(pill,name);
+  if(p.oldPrice){const old=document.createElement('div');old.className='old';old.textContent=money(p.oldPrice);body.append(old)}
+  const price=document.createElement('div');price.className='price';price.textContent=money(p.price);
+  const a=document.createElement('a');a.className='buy'+(!p.url?' disabled':'');a.textContent=p.url?'COMPRAR AGORA':'LINK NÃO CADASTRADO';a.href=p.url||'#';if(p.url){a.target='_blank';a.rel='noopener noreferrer'}
+  body.append(price,store,a);card.append(photo,body);productGrid.append(card);
+ });
+}
+document.getElementById('search').addEventListener('input',renderProducts);
+document.getElementById('searchBtn').onclick=renderProducts;
+document.getElementById('sort').onchange=renderProducts;
+const dialog=document.getElementById('adminDialog');
+document.getElementById('openAdmin').onclick=()=>dialog.showModal();
+document.getElementById('closeAdmin').onclick=()=>dialog.close();
+document.getElementById('offerForm').onsubmit=e=>{
+ e.preventDefault();
+ const url=document.getElementById('url').value.trim();
+ if(!/^https?:\/\//i.test(url)){alert('Digite um link que comece com https:// ou http://');return}
+ offers.unshift({name:document.getElementById('name').value.trim(),price:Number(document.getElementById('price').value),oldPrice:Number(document.getElementById('oldPrice').value)||0,category:document.getElementById('category').value,store:document.getElementById('store').value.trim(),url,emoji:document.getElementById('emoji').value.trim()||'📦'});
+ save();e.target.reset();dialog.close();selected='Todas';renderCats();renderProducts();alert('Oferta cadastrada neste aparelho!');
+};
+renderCats();renderProducts();
 </script>
-
-</body>
-</html>
+</body></html>
