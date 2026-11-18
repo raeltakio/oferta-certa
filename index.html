@@ -1,1 +1,154 @@
 
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OFERTA CERTA</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f1f5fb;
+ color:#172554;
+}
+header{
+ background:#0755c9;
+ color:white;
+ padding:25px 15px;
+ text-align:center;
+}
+header h1{margin:0;font-size:30px}
+header p{margin-bottom:0}
+.container{
+ max-width:900px;
+ margin:25px auto;
+ padding:15px;
+}
+.search{
+ display:flex;
+ gap:8px;
+}
+input{
+ flex:1;
+ min-width:0;
+ padding:14px;
+ border:1px solid #ccc;
+ border-radius:8px;
+ font-size:16px;
+}
+button{
+ background:#0755c9;
+ color:white;
+ border:0;
+ padding:14px 18px;
+ border-radius:8px;
+ font-weight:bold;
+ cursor:pointer;
+}
+h2{margin-top:30px}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+ gap:15px;
+}
+.card{
+ background:white;
+ padding:20px;
+ border-radius:12px;
+ box-shadow:0 2px 9px #0001;
+ text-align:center;
+}
+.card .emoji{font-size:35px}
+.card h3{margin:10px 0}
+.card p{color:#64748b}
+footer{
+ text-align:center;
+ padding:25px;
+ color:#64748b;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🔵 OFERTA CERTA</h1>
+<p>As melhores ofertas em um só lugar!</p>
+</header>
+
+<div class="container">
+
+<h2>🔎 Encontre sua oferta</h2>
+
+<div class="search">
+<input id="busca" placeholder="O que você procura?">
+<button onclick="buscar()">Buscar</button>
+</div>
+
+<h2>🛍️ Categorias</h2>
+
+<div class="grid">
+<div class="card">
+<div class="emoji">📱</div>
+<h3>Celulares</h3>
+<p>Tecnologia e ofertas</p>
+</div>
+
+<div class="card">
+<div class="emoji">💻</div>
+<h3>Informática</h3>
+<p>Computadores e acessórios</p>
+</div>
+
+<div class="card">
+<div class="emoji">🏠</div>
+<h3>Casa</h3>
+<p>Produtos para seu lar</p>
+</div>
+
+<div class="card">
+<div class="emoji">👕</div>
+<h3>Moda</h3>
+<p>Roupas e acessórios</p>
+</div>
+
+<div class="card">
+<div class="emoji">🎮</div>
+<h3>Games</h3>
+<p>Jogos e consoles</p>
+</div>
+
+<div class="card">
+<div class="emoji">🔌</div>
+<h3>Eletrônicos</h3>
+<p>Ofertas em tecnologia</p>
+</div>
+</div>
+
+<h2>⭐ Ofertas em breve</h2>
+<div class="card">
+<h3>Estamos preparando novidades!</h3>
+<p>Em breve você encontrará produtos e ofertas selecionadas no OFERTA CERTA.</p>
+</div>
+
+</div>
+
+<footer>
+© 2026 OFERTA CERTA - Todos os direitos reservados.
+</footer>
+
+<script>
+function buscar(){
+ const termo=document.getElementById("busca").value.trim();
+ if(!termo){
+  alert("Digite o que você procura!");
+  return;
+ }
+ alert("Estamos preparando as ofertas de: "+termo);
+}
+</script>
+
+</body>
+</html>
